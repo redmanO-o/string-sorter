@@ -1,21 +1,18 @@
-package org.example;
+package sorter;
 
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 public class StringSorterTest {
-    private StringSorter sorter;
+    private final StringSorter sorter = new StringSorter();
     private static final String RIGHT_PREFIX = "a";
-
-    @BeforeEach
-    void setUp() {
-        sorter = new StringSorter();
-    }
 
     @Test
     void testSortStringsEmptyInput() {

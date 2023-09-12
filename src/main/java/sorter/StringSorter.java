@@ -1,8 +1,7 @@
-package org.example;
+package sorter;
 
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,9 +17,9 @@ public class StringSorter {
             throw new IllegalArgumentException("Prefix couldn't be null");
         }
 
-        List<String> sortedStrings = new ArrayList<>();
-        Deque<String> prefixIncludeStrings = new LinkedList<>();
-        List<String> prefixExcludeStrings = new ArrayList<>();
+        List<String> sortedStrings;
+        List<String> stringsWithPrefix = new ArrayList<>();
+        List<String> stringsWithoutPrefix = new ArrayList<>();
 
         for (String string : unsortedStrings) {
             if (string == null) {
@@ -29,21 +28,18 @@ public class StringSorter {
             }
 
             if (string.startsWith(exceptionChar)) {
-                prefixIncludeStrings.push(string);
+                stringsWithPrefix.add(string);
             } else {
-                prefixExcludeStrings.add(string);
+                stringsWithoutPrefix.add(string);
             }
         }
 
-        if (!prefixExcludeStrings.isEmpty()) {
-            sortedStrings = prefixExcludeStrings.stream()
-                    .sorted()
-                    .collect(Collectors.toList());
-        }
+        sortedStrings = stringsWithoutPrefix.stream()
+                .sorted()
+                .collect(Collectors.toList());
 
-        if (!prefixIncludeStrings.isEmpty()) {
-            sortedStrings.addAll(prefixIncludeStrings);
-        }
+        stringsWithPrefix.sort(Collections.reverseOrder());
+        sortedStrings.addAll(stringsWithPrefix);
 
         return sortedStrings;
     }

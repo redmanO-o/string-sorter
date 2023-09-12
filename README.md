@@ -1,11 +1,7 @@
 # String-sorter
-### test task
+### _test task_
 
 ### 📜 Description
-![alt text](src/main/resources/images/discriptions-string-sorter.png)
-
-OR text
-
 
         Marking will be based upon producing a readable, well engineered solution rather
     than factors such as speed of processing or other performance-based optimizations, which
